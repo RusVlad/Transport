@@ -1,0 +1,45 @@
+﻿@page
+@model Transport.Pages.Shippings.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h3>Create Shipping</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-2">
+                <label asp-for="Shipping.VehicleId" class="control-label"></label>
+                <select asp-for="Shipping.VehicleId" class ="form-control" asp-items="ViewBag.VehicleId"></select>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Shipping.DriverId" class="control-label"></label>
+                <select asp-for="Shipping.DriverId" class ="form-control" asp-items="ViewBag.DriverId"></select>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Shipping.ClientId" class="control-label"></label>
+                <select asp-for="Shipping.ClientId" class ="form-control" asp-items="ViewBag.ClientId"></select>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Shipping.Status" class="control-label"></label>
+                <select asp-for="Shipping.Status">
+                    <option value="">Select a status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Delivered">Delivered</option>
+                </select>
+                <span asp-validation-for="Shipping.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a asp-page="Index">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-primary ml-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

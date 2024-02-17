@@ -1,0 +1,30 @@
+﻿@page
+@model Transport.Pages.LicenseCategories.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h3>Edit License Category</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LicenseCategory.Id" />
+            <div class="form-item">
+                <label asp-for="LicenseCategory.Category" class="control-label">Name</label>
+                <input asp-for="LicenseCategory.Category" class="form-control" />
+                <span asp-validation-for="LicenseCategory.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <a asp-page="./Index">Back to List</a>
+                <input type="submit" value="Save" class="btn btn-primary ml-1" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

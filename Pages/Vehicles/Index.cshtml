@@ -1,0 +1,43 @@
+﻿@page
+@model Transport.Pages.Vehicles.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="flex jcsb w-100 aic">
+    <h1 class="mb-2">Vehicles</h1>
+
+    <a asp-page="Create" class="btn-primary">Create vehicle</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].LicensePlate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].LicenseCategory)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Vehicle) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicensePlate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicenseCategory.Category)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

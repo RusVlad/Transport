@@ -1,0 +1,56 @@
+﻿@page
+@model Transport.Pages.Drivers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="flex jcsb w-100 aic">
+    <h1 class="mb-2">Drivers</h1>
+
+    <a asp-page="Create" class="btn-primary">Create a new license category</a>
+</div>
+
+@if (Model.Driver.Count == 0)
+{
+    <p>There are no drivers created. Create a new one!</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Driver[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Driver[0].LicenseCategoryId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Driver[0].VehicleId)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Driver) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseCategory.Category)
+                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle.LicensePlate)
+                    </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+}

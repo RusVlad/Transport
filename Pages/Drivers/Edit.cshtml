@@ -1,0 +1,42 @@
+﻿@page
+@model Transport.Pages.Drivers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h3>Edit Driver</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Driver.Id" />
+            <div class="form-group">
+                <label asp-for="Driver.Name" class="control-label">Name</label>
+                <input asp-for="Driver.Name" class="form-control" />
+                <span asp-validation-for="Driver.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <label asp-for="Driver.LicenseCategoryId" class="control-label">License Category</label>
+                <select asp-for="Driver.LicenseCategoryId" class="form-control" asp-items="ViewBag.LicenseCategoryId">
+                </select>
+                <span asp-validation-for="Driver.LicenseCategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-item mt-2">
+                <label asp-for="Driver.VehicleId" class="control-label">Vehicle</label>
+                <select asp-for="Driver.VehicleId" class="form-control" asp-items="ViewBag.VehicleId">
+                </select>
+                <span asp-validation-for="Driver.VehicleId" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <a asp-page="./Index">Back to List</a>
+                <input type="submit" value="Save" class="btn btn-primary ml-1" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
